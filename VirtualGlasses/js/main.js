@@ -38,7 +38,7 @@ indispensableGlasses();
 
 let avatar = "";
 window.removeGlasses = (remove) => {
-    if (!remove) {
+    if (remove) {
         avatar = document.getElementById("avatar").innerHTML;
         document.getElementById("avatar").innerHTML = "";
     }
