@@ -1,3 +1,4 @@
+import Glasses from "./services.js";
 let dataGlasses = [
     { id: "G1", src: "./img/g1.jpg", virtualImg: "./img/v1.png", brand: "Armani Exchange", name: "Bamboo wood", color: "Brown", price: 150, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ea voluptates officiis? " },
     { id: "G2", src: "./img/g2.jpg", virtualImg: "./img/v2.png", brand: "Arnette", name: "American flag", color: "American flag", price: 150, description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. In assumenda earum eaque doloremque, tempore distinctio." },
@@ -9,3 +10,38 @@ let dataGlasses = [
     { id: "G8", src: "./img/g8.jpg", virtualImg: "./img/v8.png", brand: "Polo", name: "NATTY ICE", color: "Red, Black", price: 120, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, unde enim." },
     { id: "G9", src: "./img/g9.jpg", virtualImg: "./img/v9.png", brand: "Coarch", name: "MIDNIGHT VIXEN REMIX", color: "Blue, Black", price: 120, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit consequatur soluta ad aut laborum amet." }
 ];
+const glassesList = dataGlasses.map((glass, index) => {
+        let glassObject = new Glasses(glass.id, glass.src, glass.virtualImg, glass.description, glass.name, glass.brand, glass.color, glass.price);
+        return glassObject;
+    })
+    // console.log(glassesList);
+window.selectGlass = (virtualImg) => {
+    const result = `
+            <div class="glasses">
+                <img style="width:100" src="${virtualImg}">
+            </div>`
+    document.getElementById("avatar").innerHTML = result;
+}
+
+const indispensableGlasses = () => {
+    const showGlassList = glassesList.reduce((result, glassObject) => {
+        let { src, virtualImg } = glassObject;
+        return result += `
+                <div  class="col-4 ">
+                    <img style="width:150px" src="${src}" onclick="selectGlass('${virtualImg}')">
+                </div>
+                `
+    }, " ");
+    document.getElementById("vglassesList").innerHTML = showGlassList;
+}
+indispensableGlasses();
+
+let avatar = "";
+window.removeGlasses = (remove) => {
+    if (!remove) {
+        avatar = document.getElementById("avatar").innerHTML;
+        document.getElementById("avatar").innerHTML = "";
+    }
+    document.getElementById("avatar").innerHTML = avatar;
+    avatar = "";
+}
