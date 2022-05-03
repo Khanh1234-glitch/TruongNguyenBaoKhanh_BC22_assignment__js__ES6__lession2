@@ -10,7 +10,7 @@ let dataGlasses = [
     { id: "G8", src: "./img/g8.jpg", virtualImg: "./img/v8.png", brand: "Polo", name: "NATTY ICE", color: "Red, Black", price: 120, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, unde enim." },
     { id: "G9", src: "./img/g9.jpg", virtualImg: "./img/v9.png", brand: "Coarch", name: "MIDNIGHT VIXEN REMIX", color: "Blue, Black", price: 120, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit consequatur soluta ad aut laborum amet." }
 ];
-const glassesList = dataGlasses.map((glass, index) => {
+const glassesList = dataGlasses.map((glass) => {
         let glassObject = new Glasses(glass.id, glass.src, glass.virtualImg, glass.description, glass.name, glass.brand, glass.color, glass.price);
         return glassObject;
     })
