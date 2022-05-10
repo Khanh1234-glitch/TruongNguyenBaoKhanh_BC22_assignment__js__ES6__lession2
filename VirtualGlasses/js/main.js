@@ -45,3 +45,29 @@ window.removeGlasses = (remove) => {
     document.getElementById("avatar").innerHTML = avatar;
     avatar = "";
 }
+
+const infoGlasses = () => {
+    const showGlassList = glassesList.reduce((result, glassObject) => {
+        let { name, brand, color, price,description } = glassObject;
+        return result += `
+                <div>
+                    <tr>
+                        <td>${name}-${brand}(${color})</td>
+                    </tr>
+                    <br>
+                </div>
+                <div>
+                <tr>
+                    <td class="bg-danger">${price}</td>
+                </tr>
+                </div>
+                <div>
+                <tr>
+                    <td>${description}</td>
+                </tr>
+                </div>
+                `
+    }, " ");
+    document.getElementById("glassesInfo").innerHTML = showGlassList;
+}
+infoGlasses();
